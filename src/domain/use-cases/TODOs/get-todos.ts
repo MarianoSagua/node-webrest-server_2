@@ -1,4 +1,3 @@
-import { UpdateTodoDTO } from "../../DTOs";
 import { TodoRepository } from "../../classes/repositories/todo.repository";
 import { TodoEntity } from "../../entities/todo.entity";
 
