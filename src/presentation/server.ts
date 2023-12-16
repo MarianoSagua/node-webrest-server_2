@@ -1,5 +1,6 @@
 import express, { Router } from "express";
 import path from "path";
+const compression = require("compression");
 
 interface Options {
   port: number;
@@ -24,6 +25,7 @@ export class Server {
     //* Middlewares
     this.app.use(express.json()); // Raw
     this.app.use(express.urlencoded({ extended: true })); // x-www-form-urlencoded
+    this.app.use(compression()); // Aumenta la velocidad de respuesta de la peticion
 
     //* Public Folder
     this.app.use(express.static(this.publicPath));

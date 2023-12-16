@@ -1,7 +1,7 @@
 export class UpdateTodoDTO {
   private constructor(
     public readonly id: number,
-    public readonly text: string,
+    public readonly text?: string,
     public readonly completedAt?: Date
   ) {}
 
@@ -33,7 +33,3 @@ export class UpdateTodoDTO {
     return [undefined, new UpdateTodoDTO(id, text, newCompletedAt)];
   }
 }
-
-
-
-
