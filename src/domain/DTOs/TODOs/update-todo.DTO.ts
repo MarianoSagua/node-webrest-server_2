@@ -1,4 +1,4 @@
-export class UpdateTodoDTO {
+export class UpdateTodoDto {
   private constructor(
     public readonly id: number,
     public readonly text?: string,
@@ -14,7 +14,7 @@ export class UpdateTodoDTO {
     return returnObj;
   }
 
-  static create(props: { [key: string]: any }): [string?, UpdateTodoDTO?] {
+  static create(props: { [key: string]: any }): [string?, UpdateTodoDto?] {
     const { id, text, completedAt } = props;
     let newCompletedAt = completedAt;
 
@@ -30,6 +30,6 @@ export class UpdateTodoDTO {
       }
     }
 
-    return [undefined, new UpdateTodoDTO(id, text, newCompletedAt)];
+    return [undefined, new UpdateTodoDto(id, text, newCompletedAt)];
   }
 }

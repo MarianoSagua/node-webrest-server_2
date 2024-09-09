@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateTodoDTO, UpdateTodoDTO } from "../../domain/DTOs";
+import { CreateTodoDto, UpdateTodoDto } from "../../domain/dtos";
 import {
   CreateTodo,
   DeleteTodo,
@@ -29,22 +29,22 @@ export class TodosController {
   };
 
   public createTodo = (req: Request, res: Response) => {
-    const [error, createTodoDTO] = CreateTodoDTO.create(req.body);
+    const [error, createTodoDto] = CreateTodoDto.create(req.body);
     if (error) return res.status(400).json({ error });
 
     new CreateTodo(this.todoRepository)
-      .execute(createTodoDTO!)
+      .execute(createTodoDto!)
       .then((todo) => res.json(todo))
       .catch((error) => res.status(400).json({ error }));
   };
 
   public updateTodo = (req: Request, res: Response) => {
     const id = +req.params.id;
-    const [error, updateTodoDTO] = UpdateTodoDTO.create({ ...req.body, id });
+    const [error, updateTodoDto] = UpdateTodoDto.create({ ...req.body, id });
     if (error) return res.status(400).json({ error });
 
     new UpdateTodo(this.todoRepository)
-      .execute(updateTodoDTO!)
+      .execute(updateTodoDto!)
       .then((todo) => res.json(todo))
       .catch((error) => res.status(400).json({ error }));
   };

@@ -1,2 +1,2 @@
-export * from "./TODOs/create-todo.DTO";
-export * from "./TODOs/update-todo.DTO";
+export * from "./todos/create-todo.dto";
+export * from "./todos/update-todo.dto";

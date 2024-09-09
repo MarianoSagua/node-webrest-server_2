@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { prisma } from "../../data/postgres-data";
-import { CreateTodoDTO, UpdateTodoDTO } from "../../domain/DTOs";
+import { CreateTodoDto, UpdateTodoDto } from "../../domain/dtos";
 import { TodoRepository } from "../../domain";
 
 export class TodosController {
@@ -23,19 +23,19 @@ export class TodosController {
   };
 
   public createTodo = async (req: Request, res: Response) => {
-    const [error, createTodoDTO] = CreateTodoDTO.create(req.body);
+    const [error, createTodoDto] = CreateTodoDto.create(req.body);
     if (error) return res.status(400).json({ error });
 
-    const todo = await this.todoRepository.create(createTodoDTO!);
+    const todo = await this.todoRepository.create(createTodoDto!);
     res.json(todo);
   };
 
   public updateTodo = async (req: Request, res: Response) => {
     const id = +req.params.id;
-    const [error, updateTodoDTO] = UpdateTodoDTO.create({ ...req.body, id });
+    const [error, updateTodoDto] = UpdateTodoDto.create({ ...req.body, id });
     if (error) return res.status(400).json({ error });
 
-    const updatedTodo = await this.todoRepository.updateByID(updateTodoDTO!);
+    const updatedTodo = await this.todoRepository.updateByID(updateTodoDto!);
     return res.json(updatedTodo);
   };
 

@@ -1,16 +1,16 @@
 import {
-  CreateTodoDTO,
+  CreateTodoDto,
   TodoDataSource,
   TodoEntity,
   TodoRepository,
-  UpdateTodoDTO,
+  UpdateTodoDto,
 } from "../../domain";
 
 export class TodoRepositoryImpl implements TodoRepository {
   constructor(private readonly dataSource: TodoDataSource) {}
 
-  create(createTodoDTO: CreateTodoDTO): Promise<TodoEntity> {
-    return this.dataSource.create(createTodoDTO);
+  create(createTodoDto: CreateTodoDto): Promise<TodoEntity> {
+    return this.dataSource.create(createTodoDto);
   }
 
   getAll(): Promise<TodoEntity[]> {
@@ -21,8 +21,8 @@ export class TodoRepositoryImpl implements TodoRepository {
     return this.dataSource.findByID(id);
   }
 
-  updateByID(updateTodoDTO: UpdateTodoDTO): Promise<TodoEntity> {
-    return this.dataSource.updateByID(updateTodoDTO);
+  updateByID(updateTodoDto: UpdateTodoDto): Promise<TodoEntity> {
+    return this.dataSource.updateByID(updateTodoDto);
   }
 
   deleteByID(id: number): Promise<TodoEntity> {
