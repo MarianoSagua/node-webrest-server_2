@@ -4,8 +4,8 @@ const compression = require("compression");
 
 interface Options {
   port: number;
-  routes: Router;
   public_path?: string;
+  routes: Router;
 }
 
 export class Server {
@@ -23,7 +23,7 @@ export class Server {
 
   async start() {
     //* Middlewares
-    this.app.use(express.json()); // Raw
+    this.app.use(express.json()); // Maneja datos JSON en solicitudes
     this.app.use(express.urlencoded({ extended: true })); // x-www-form-urlencoded
     this.app.use(compression()); // Aumenta la velocidad de respuesta de la peticion
 
@@ -33,7 +33,7 @@ export class Server {
     //* Routes
     this.app.use(this.routes);
 
-    //* SPA
+    //* SPA (Single Page Application)
     this.app.use("*", (req, res) => {
       const indexPath = path.join(
         __dirname + `../../../${this.publicPath}/index.html`

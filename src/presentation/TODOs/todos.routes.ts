@@ -8,6 +8,7 @@ export class TodoRoutes {
 
     const dataSource = new TodoDataSourceImpl();
     const todoRepository = new TodoRepositoryImpl(dataSource);
+    
     const todoController = new TodosController(todoRepository);
 
     router.get("/", todoController.getTodos);
